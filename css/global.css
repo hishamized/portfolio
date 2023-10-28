@@ -1,0 +1,5 @@
+@media (min-width: 768px){
+    #sidebar_container{
+       height: 100vh;
+    }
+}
