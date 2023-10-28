@@ -1,5 +1,22 @@
+
+#heroImgContainer{
+    width: 300px;
+    height: 300px;
+}
 @media (min-width: 768px){
     #sidebar_container{
        height: 100vh;
+    }
+    #heroImgContainer{
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 600px){
+    #heroImgContainer{
+        width: 200px;
+        height: 200px;
+        margin-top: 25px;
     }
 }
