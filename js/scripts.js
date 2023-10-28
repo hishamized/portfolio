@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navPage1Link.addEventListener("click", function (e) {
         e.preventDefault(); 
         loadContent("pages/projects.html");
-        sidebar.classList.toggle("d-none");
       });
 
       page2Link.addEventListener("click", function (e) {
@@ -91,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navPage2Link.addEventListener("click", function (e) {
         e.preventDefault(); 
         loadContent("pages/about.html");
-        sidebar.classList.toggle("d-none");
       });
 
       page3Link.addEventListener("click", function (e) {
@@ -103,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navPage3Link.addEventListener("click", function (e) {
         e.preventDefault(); 
         loadContent("pages/contact.html");
-        sidebar.classList.toggle("d-none");
       });
 
       page4Link.addEventListener("click", function (e) {
@@ -115,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navPage4Link.addEventListener("click", function (e) {
         e.preventDefault(); 
         loadContent("pages/skills.html");
-        sidebar.classList.toggle("d-none");
       });
     });
 });
