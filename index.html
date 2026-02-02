@@ -1,34 +1,900 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HishaMized</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="css/global.css">
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    <script
-      defer
-      src="https://kit.fontawesome.com/1bc2765d38.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-<body>
-  <div id="app" style="display: none; overflow-x: hidden; width: 100%; height: 100vh;">
-    <div id="header"></div>
-    <div class="d-none" id="sidebar"></div>
-    <div id="content"></div>
-    <div id="hero"></div>
-    <div id="footer"></div>
-</div>
+<html lang="en" class="scroll-smooth">
 
-  <script src="js/scripts.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Hisham Mir - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#DC2626', // Red-600
+                            dark: '#9333EA', // Purple-600
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full z-50 bg-white dark:bg-gray-950 md:bg-white/90 md:dark:bg-gray-950/90 md:backdrop-blur-md shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div
+                    class="flex-shrink-0 font-bold text-2xl tracking-tighter text-red-600 dark:text-purple-500 transition-colors duration-300">
+                    MHM<span class="text-gray-900 dark:text-gray-100">.</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#experience"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        <a href="#skills"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#education"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
+                        <a href="#trainings"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Trainings</a>
+                        <a href="#projects"
+                            class="hover:text-red-600 dark:hover:text-purple-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                    </div>
+                </div>
+
+                <!-- Icons (Theme + Mobile) -->
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+                        <i class="fas fa-sun w-5 h-5 hidden dark:block text-yellow-400"></i>
+                        <i class="fas fa-moon w-5 h-5 block dark:hidden text-gray-700"></i>
+                    </button>
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none">
+                        <i class="fas fa-bars w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[100] h-screen w-screen bg-white dark:bg-gray-900 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center items-center space-y-6">
+            <button id="mobile-menu-close"
+                class="absolute top-6 right-6 p-2 text-gray-500 hover:text-red-600 dark:hover:text-purple-500 transition-colors">
+                <i class="fas fa-times w-8 h-8 text-2xl"></i>
+            </button>
+            <a href="#home"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Home</a>
+            <a href="#experience"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Experience</a>
+            <a href="#skills"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Skills</a>
+            <a href="#education"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Education</a>
+            <a href="#trainings"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Trainings</a>
+            <a href="#projects"
+                class="mobile-link text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-red-600 dark:hover:text-purple-500 transition-colors">Projects</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Blobs -->
+        <div
+            class="absolute top-0 -left-4 w-72 h-72 bg-red-300 dark:bg-purple-900 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 dark:bg-blue-900 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 dark:bg-indigo-900 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center relative z-10">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-red-100 text-red-600 dark:bg-purple-900/30 dark:text-purple-300 text-xs font-semibold tracking-wider mb-6 uppercase">Available
+                for work</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Hi, I'm <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-rose-500 dark:from-purple-500 dark:to-indigo-400">Mohammad
+                    Hisham Mir</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl leading-relaxed">
+                Qualified <span class="font-semibold text-gray-900 dark:text-white">Software Development Engineer</span>
+                specialized in building scalable, high-impact software.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#contact"
+                    class="px-8 py-4 rounded-full bg-red-600 text-white dark:bg-purple-600 hover:bg-red-700 dark:hover:bg-purple-700 transition-all shadow-lg hover:shadow-xl font-semibold text-lg flex items-center justify-center gap-2">
+                    Let's Connect
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="linkedin.com/in/mohammad-hisham-10287b26b?originalSubdomain=in" target="_blank"
+                    class="px-8 py-4 rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-red-600 dark:hover:border-purple-600 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-purple-400 transition-all font-semibold text-lg flex items-center justify-center gap-2 bg-white dark:bg-gray-800">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="resume/MohammadHishamSDEResume.pdf" target="_blank" download
+                    class="px-8 py-4 rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-red-600 dark:hover:border-purple-600 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-purple-400 transition-all font-semibold text-lg flex items-center justify-center gap-2 bg-white dark:bg-gray-800">
+                    <i class="fas fa-file-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 relative overflow-hidden bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Experience Map</h2>
+                <div class="h-1 w-20 bg-red-600 dark:bg-purple-600 mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400 font-medium animate-pulse cursor-pointer"
+                    onclick="document.getElementById('experience').scrollIntoView()">
+                    Click on any card to view detailed responsibilities.
+                </p>
+            </div>
+
+            <div class="relative timeline-container max-w-5xl mx-auto">
+                <!-- Center Line -->
+                <div
+                    class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-gray-200 via-red-300 to-gray-200 dark:from-gray-800 dark:via-purple-500 dark:to-gray-800 rounded-full">
+                </div>
+
+                <!-- Item 1 -->
+                <div class="relative z-10 mb-16 md:mb-24 group experience-item cursor-pointer"
+                    data-role="Software Development Engineer" data-company="Almuqeet Systems Pvt. Ltd."
+                    data-date="Sep 2025 – Present">
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div
+                            class="md:w-5/12 text-left md:text-right md:pr-12 pl-12 md:pl-0 fade-in-section relative hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-purple-500 transition-colors">
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Almuqeet Systems</h3>
+                                <p class="text-red-600 dark:text-purple-400 font-bold text-lg">SDE</p>
+                                <p class="text-sm text-gray-400 font-mono mb-2">Sep 2025 – Present</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Developing scalable enterprise
+                                    software & RMS systems with ASP.NET Core.</p>
+                                <div
+                                    class="mt-4 inline-flex items-center text-xs font-bold text-red-500 dark:text-purple-400 uppercase tracking-wide">
+                                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                            <!-- Hidden Details for Modal -->
+                            <div class="details-content hidden">
+                                <ul class="list-disc list-inside space-y-3 text-left">
+                                    <li>Developing scalable enterprise software using Microsoft’s ASP.NET Core Fullstack
+                                        Framework.</li>
+                                    <li>Maintaining complex codebases built on Onion/Clean architecture with MVC and
+                                        CQRS patterns.</li>
+                                    <li>Maintained Short Message Service Center CPaaS software and developed RMS system
+                                        from scratch.</li>
+                                    <li>Performing testing on RESTful APIs using Postman and Swagger.</li>
+                                    <li>Writing automated Unit Tests for services with all possible test cases.</li>
+                                    <li>Creating User Interfaces using TailwindCSS, Bootstrap, jQuery, and ReactJs.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full border-4 border-white dark:border-gray-900 bg-red-600 dark:bg-purple-600 z-20 shadow-lg flex items-center justify-center">
+                            <i class="fas fa-briefcase text-white text-[10px]"></i>
+                        </div>
+                        <div class="md:w-5/12 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative z-10 mb-16 md:mb-24 group experience-item cursor-pointer"
+                    data-role="Web Development Mentor" data-company="CodeYoung" data-date="Apr 2025 – Sep 2025">
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full">
+                        <div
+                            class="md:w-5/12 text-left md:pl-12 pl-12 md:pl-12 fade-in-section relative hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-purple-500 transition-colors">
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">CodeYoung</h3>
+                                <p class="text-red-600 dark:text-purple-400 font-bold text-lg">Web Dev Mentor</p>
+                                <p class="text-sm text-gray-400 font-mono mb-2">Apr 2025 – Sep 2025</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Mentoring students in Python, JS,
+                                    Java & enhancing learning portal.</p>
+                                <div
+                                    class="mt-4 inline-flex items-center text-xs font-bold text-red-500 dark:text-purple-400 uppercase tracking-wide">
+                                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="details-content hidden">
+                                <ul class="list-disc list-inside space-y-3 text-left">
+                                    <li>Guided young minds through coding journey teaching Web Dev, Python, JS, Java.
+                                    </li>
+                                    <li>Mentored students on real-world programming concepts, debugging, and best
+                                        practices.</li>
+                                    <li>Collaborated to enhance student and mentor portal, improving usability and
+                                        learning flow.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 bg-gray-400 dark:bg-gray-700 z-20">
+                        </div>
+                        <div class="md:w-5/12 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative z-10 mb-16 md:mb-24 group experience-item cursor-pointer"
+                    data-role="FullStack Web Developer" data-company="UFK Solutions" data-date="Mar 2025 – Apr 2025">
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div
+                            class="md:w-5/12 text-left md:text-right md:pr-12 pl-12 md:pl-0 fade-in-section relative hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-purple-500 transition-colors">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">UFK Solutions</h3>
+                                <p class="text-red-600 dark:text-purple-400 font-bold">FullStack Dev</p>
+                                <p class="text-sm text-gray-400 font-mono mb-2">Mar 2025 – Apr 2025</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Laravel Breeze UIs, DB logic &
+                                    Automated Selenium Testing.</p>
+                                <div
+                                    class="mt-4 inline-flex items-center text-xs font-bold text-red-500 dark:text-purple-400 uppercase tracking-wide">
+                                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="details-content hidden">
+                                <ul class="list-disc list-inside space-y-3 text-left">
+                                    <li>Built responsive user interfaces using Laravel Breeze, Tailwind CSS, Bootstrap.
+                                    </li>
+                                    <li>Developed server-side logic and database interactions in Laravel.</li>
+                                    <li>Integrated third-party APIs to enhance features.</li>
+                                    <li>Performed automated browser testing using Selenium.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 bg-gray-400 dark:bg-gray-700 z-20">
+                        </div>
+                        <div class="md:w-5/12 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative z-10 mb-16 md:mb-24 group experience-item cursor-pointer"
+                    data-role="Backend Developer" data-company="IA-WebTech" data-date="Mar 2025 – Apr 2025">
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between w-full">
+                        <div
+                            class="md:w-5/12 text-left md:pl-12 pl-12 md:pl-12 fade-in-section relative hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-purple-500 transition-colors">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">IA-WebTech</h3>
+                                <p class="text-red-600 dark:text-purple-400 font-bold">Backend Dev</p>
+                                <p class="text-sm text-gray-400 font-mono mb-2">Mar 2025 – Apr 2025</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">MVC backend logic, RESTful APIs &
+                                    Flutter Integration.</p>
+                                <div
+                                    class="mt-4 inline-flex items-center text-xs font-bold text-red-500 dark:text-purple-400 uppercase tracking-wide">
+                                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="details-content hidden">
+                                <ul class="list-disc list-inside space-y-3 text-left">
+                                    <li>Designed MVC backend logic & RESTful APIs using Laravel.</li>
+                                    <li>Collaborated with Flutter team for seamless API integration.</li>
+                                    <li>Structured and optimized MySQL schemas.</li>
+                                    <li>Conducted thorough API validation using Postman.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 bg-gray-400 dark:bg-gray-700 z-20">
+                        </div>
+                        <div class="md:w-5/12 hidden md:block"></div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="relative z-10 mb-16 group experience-item cursor-pointer" data-role="Front End Developer"
+                    data-company="EllMenus" data-date="May 2022 – July 2023">
+                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+                        <div
+                            class="md:w-5/12 text-left md:text-right md:pr-12 pl-12 md:pl-0 fade-in-section relative hover:scale-105 transition-transform duration-300">
+                            <div
+                                class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-purple-500 transition-colors">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white">EllMenus</h3>
+                                <p class="text-red-600 dark:text-purple-400 font-bold">Front End Dev</p>
+                                <p class="text-sm text-gray-400 font-mono mb-2">May 2022 – July 2023</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Responsive UI with HTML5/CSS3/Vuexy
+                                    & Pixel-perfect design.</p>
+                                <div
+                                    class="mt-4 inline-flex items-center text-xs font-bold text-red-500 dark:text-purple-400 uppercase tracking-wide">
+                                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="details-content hidden">
+                                <ul class="list-disc list-inside space-y-3 text-left">
+                                    <li>Developed responsive user interfaces using HTML5, CSS3, Bootstrap, Tailwind CSS,
+                                        Vuexy.</li>
+                                    <li>Translated design mockups into pixel-perfect web pages.</li>
+                                    <li>Collaborated with backend developers to integrate APIs.</li>
+                                    <li>Implemented mobile-first responsive design principles.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-gray-900 bg-gray-400 dark:bg-gray-700 z-20">
+                        </div>
+                        <div class="md:w-5/12 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Arsenal</h2>
+                <div class="h-1 w-20 bg-red-600 dark:bg-purple-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Category: Front End Technologies -->
+                <div class="fade-in-section">
+                    <h3
+                        class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                        Front End Technologies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <div class="skill-card group"><i
+                                class="fab fa-html5 text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">HTML5</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-css3-alt text-3xl text-blue-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">CSS3</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-js text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">JavaScript</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-bootstrap text-3xl text-purple-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Bootstrap</span></div>
+                        <div class="skill-card group"><i
+                                class="fas fa-wind text-3xl text-cyan-400 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Tailwind</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-react text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">React.js</span></div>
+                    </div>
+                </div>
+
+                <!-- Category: Programming Languages -->
+                <div class="fade-in-section">
+                    <h3
+                        class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                        Programming Languages</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                        <div class="skill-card group"><i
+                                class="fas fa-code text-3xl text-gray-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">C/C++</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-microsoft text-3xl text-purple-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">C#</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-java text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Java</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-js-square text-3xl text-yellow-400 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">JavaScript</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-php text-3xl text-indigo-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">PHP</span></div>
+                        <div class="skill-card group"><i
+                                class="fas fa-database text-3xl text-blue-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">SQL</span></div>
+                        <div class="skill-card group"><i
+                                class="fas fa-terminal text-3xl text-gray-700 dark:text-gray-300 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Bash</span></div>
+                    </div>
+                </div>
+
+                <!-- Category: Frameworks & Libraries -->
+                <div class="fade-in-section">
+                    <h3
+                        class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                        Frameworks & Libraries</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        <div class="skill-card group"><i
+                                class="fas fa-server text-3xl text-blue-800 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">ASP.NET Core</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-node text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Express.js</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-laravel text-3xl text-red-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Laravel</span></div>
+                        <div class="skill-card group"><i
+                                class="fab fa-php text-3xl text-purple-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                class="font-semibold text-sm">Yii 2.0</span></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Category: Databases -->
+                    <div class="fade-in-section">
+                        <h3
+                            class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                            Databases</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="skill-card group"><i
+                                    class="fas fa-database text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">MySQL</span></div>
+                            <div class="skill-card group"><i
+                                    class="fas fa-database text-3xl text-blue-300 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">PostgreSQL</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Version Control -->
+                    <div class="fade-in-section">
+                        <h3
+                            class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                            Version Control</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="skill-card group"><i
+                                    class="fab fa-git-alt text-3xl text-red-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Git</span></div>
+                            <div class="skill-card group"><i
+                                    class="fab fa-github text-3xl text-gray-800 dark:text-white mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">GitHub</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Category: Collaboration -->
+                    <div class="fade-in-section">
+                        <h3
+                            class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                            Collaboration</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="skill-card group"><i
+                                    class="fas fa-tasks text-3xl text-green-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Nulab Backlog</span></div>
+                            <div class="skill-card group"><i
+                                    class="fab fa-jira text-3xl text-blue-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Jira</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Testing & API -->
+                    <div class="fade-in-section">
+                        <h3
+                            class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 border-l-4 border-red-600 dark:border-purple-600 pl-4">
+                            Testing & API</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <div class="skill-card group"><i
+                                    class="fas fa-code-branch text-3xl text-green-600 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Swagger</span></div>
+                            <div class="skill-card group"><i
+                                    class="fas fa-space-shuttle text-3xl text-orange-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Postman</span></div>
+                            <div class="skill-card group"><i
+                                    class="fas fa-check-double text-3xl text-gray-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">Selenium IDE</span></div>
+                            <div class="skill-card group"><i
+                                    class="fas fa-robot text-3xl text-green-500 mb-2 group-hover:scale-110 transition-transform"></i><span
+                                    class="font-semibold text-sm">WebDriver</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 relative bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Education</h2>
+                <div class="h-1 w-20 bg-red-600 dark:bg-purple-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Masters -->
+                <div
+                    class="education-card bg-gray-50 dark:bg-gray-800 p-1 rounded-2xl shadow-lg relative overflow-hidden group fade-in-section">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 dark:from-purple-600 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="relative bg-white dark:bg-gray-800 p-8 rounded-xl h-full flex flex-col items-center text-center z-10">
+                        <div class="absolute top-4 right-4 animate-pulse">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold leading-5 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                <i class="fas fa-check-circle mr-1"></i> ZERO BACKLOGS
+                            </span>
+                        </div>
+                        <div
+                            class="w-16 h-16 bg-red-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-6 text-red-600 dark:text-purple-400">
+                            <i class="fas fa-graduation-cap text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Master of Technology</h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">Computer Science Engineering</p>
+                        <p class="text-red-600 dark:text-purple-400 font-bold mt-2">University of Kashmir</p>
+                        <p class="text-sm text-gray-500 mt-1 font-mono">Nov 2023 – Sep 2025</p>
+                        <div class="mt-6">
+                            <span
+                                class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-lg font-bold">7.5
+                                SGPA</span>
+                        </div>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm">Contributed to ML based Network
+                            intrusion detection system (Research Paper).</p>
+                    </div>
+                </div>
+
+                <!-- Bachelors -->
+                <div class="education-card bg-gray-50 dark:bg-gray-800 p-1 rounded-2xl shadow-lg relative overflow-hidden group fade-in-section"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 dark:from-purple-600 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="relative bg-white dark:bg-gray-800 p-8 rounded-xl h-full flex flex-col items-center text-center z-10">
+                        <div class="absolute top-4 right-4 animate-pulse">
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold leading-5 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                <i class="fas fa-check-circle mr-1"></i> ZERO BACKLOGS
+                            </span>
+                        </div>
+                        <div
+                            class="w-16 h-16 bg-red-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-6 text-red-600 dark:text-purple-400">
+                            <i class="fas fa-university text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Bachelor of Engineering</h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">Computer Science Engineering</p>
+                        <p class="text-red-600 dark:text-purple-400 font-bold mt-2">SSM College of Engineering</p>
+                        <p class="text-sm text-gray-500 mt-1 font-mono">Aug 2019 – Sep 2023</p>
+                        <div class="mt-6">
+                            <span
+                                class="inline-block px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-lg font-bold">8.4
+                                SGPA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainings Section -->
+    <section id="trainings" class="py-24 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center">Trainings & Internships</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- Training Card -->
+                <div
+                    class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 fade-in-section flex gap-4 items-start">
+                    <div
+                        class="p-3 bg-red-100 dark:bg-purple-900/30 rounded-lg text-red-600 dark:text-purple-400 shrink-0">
+                        <i class="fas fa-laptop-code text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold tracking-wide text-gray-400 uppercase mb-1">Internship</div>
+                        <h4 class="font-bold text-xl mb-1">Iflex Technologies</h4>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-2 font-medium">Full-Stack Web Dev</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">May 2025 – Aug 2025</p>
+                        <p class="text-sm text-gray-500">Gained hands-on experience in React, Node.js, Express, and
+                            PostgreSQL.</p>
+                    </div>
+                </div>
+
+                <!-- Training Card -->
+                <div
+                    class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 fade-in-section flex gap-4 items-start">
+                    <div
+                        class="p-3 bg-red-100 dark:bg-purple-900/30 rounded-lg text-red-600 dark:text-purple-400 shrink-0">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold tracking-wide text-gray-400 uppercase mb-1">Internship</div>
+                        <h4 class="font-bold text-xl mb-1">Synthra Labs</h4>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-2 font-medium">Web Programming</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">May 2025 – June 2025</p>
+                        <p class="text-sm text-gray-500">Assisted in web-based app development while strengthening core
+                            fundamentals.</p>
+                    </div>
+                </div>
+
+                <!-- Training Card -->
+                <div
+                    class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 fade-in-section flex gap-4 items-start">
+                    <div
+                        class="p-3 bg-red-100 dark:bg-purple-900/30 rounded-lg text-red-600 dark:text-purple-400 shrink-0">
+                        <i class="fas fa-layer-group text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold tracking-wide text-gray-400 uppercase mb-1">Internship</div>
+                        <h4 class="font-bold text-xl mb-1">UFK Solutions</h4>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-2 font-medium">Full-Stack Web Dev</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">May 2023 – July 2023</p>
+                        <p class="text-sm text-gray-500">Developed web applications using PHP and Laravel in an
+                            intensive environment.</p>
+                    </div>
+                </div>
+
+                <!-- Training Card -->
+                <div
+                    class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 fade-in-section flex gap-4 items-start">
+                    <div
+                        class="p-3 bg-red-100 dark:bg-purple-900/30 rounded-lg text-red-600 dark:text-purple-400 shrink-0">
+                        <i class="fas fa-certificate text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold tracking-wide text-gray-400 uppercase mb-1">Training</div>
+                        <h4 class="font-bold text-xl mb-1">Internshala</h4>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-2 font-medium">Full-Stack Trainee</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Feb 2022 – Mar 2022</p>
+                        <p class="text-sm text-gray-500">Structured training in HTML, CSS, JS, React, MySQL, PHP.</p>
+                    </div>
+                </div>
+
+                <!-- Training Card -->
+                <div
+                    class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 fade-in-section flex gap-4 items-start">
+                    <div
+                        class="p-3 bg-red-100 dark:bg-purple-900/30 rounded-lg text-red-600 dark:text-purple-400 shrink-0">
+                        <i class="fas fa-desktop text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold tracking-wide text-gray-400 uppercase mb-1">Training</div>
+                        <h4 class="font-bold text-xl mb-1">Prolific Institute</h4>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-2 font-medium">Front End Trainee</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Feb 2021 – Mar 2021</p>
+                        <p class="text-sm text-gray-500">Trained in frontend fundamentals using HTML, CSS, and JS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-hospital text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">Hospital Management System</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">ASP.NET Core • Tailwind •
+                            MySQL</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Enterprise ready HMS built on Onion architecture and MVC using Microsoft’s time tested
+                            ASP.NET Core.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-external-link-alt mr-2"></i>Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-shield-alt text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                            <span
+                                class="text-xs font-bold text-green-500 border border-green-500 px-2 py-1 rounded">LIVE</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">Shield IDS Datasets</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">Laravel • PHP • Bootstrap
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Metadata management system for AI/ML research projects, supporting Intrusion Detection
+                            Systems.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-external-link-alt mr-2"></i>Live</a>
+                    </div>
+                </div>
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-robot text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">AI-Based Resume ATS</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">Python • ML • NLP</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Built an AI-powered ATS tool to bulk process resumes, extract key info, and classify resumes
+                            using ML.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-video mr-2"></i>Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-truck text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">Delivery Dekho</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">React • Node • PostgreSQL
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Delivery management web app designed to streamline order placement, rider assignment, and
+                            OTP verification.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-external-link-alt mr-2"></i>Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-heart text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">Hyemath</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">HTML • CSS • Email.JS</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Static, responsive donation platform for a Kashmir non-profit, built with Email.js for
+                            contact handling.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-external-link-alt mr-2"></i>Live</a>
+                    </div>
+                </div>
+
+                <!-- Project Card -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-950 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col group">
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <i
+                                class="fas fa-theater-masks text-4xl text-gray-300 dark:text-gray-700 group-hover:text-red-500 dark:group-hover:text-purple-500 transition-colors"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">Kashmir Performers Collective</h3>
+                        <p class="text-sm text-red-600 dark:text-purple-400 mb-4 font-mono">HTML • CSS • PHP</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Lightweight web app for theatre collective to manage festival applications with secure email
+                            submissions.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto flex gap-3">
+                        <a href="https://github.com" target="_blank"
+                            class="flex-1 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white text-center text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"><i
+                                class="fab fa-github mr-2"></i>GitHub</a>
+                        <a href="#"
+                            class="flex-1 py-2 rounded-lg bg-red-600 dark:bg-purple-600 text-white text-center text-sm font-semibold hover:bg-red-700 dark:hover:bg-purple-700 transition-colors"><i
+                                class="fas fa-external-link-alt mr-2"></i>Live</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact"
+        class="bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800 py-16 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Let's Build Something Great</h2>
+            <p class="text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto">I'm always open to discussing product
+                design work or partnership opportunities.</p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <a href="mailto:mirhashim2001@gmail.com"
+                    class="px-6 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-purple-900/30 text-gray-900 dark:text-white transition-all flex items-center gap-3 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <i class="fas fa-envelope text-red-600 dark:text-purple-400"></i>
+                    mirhashim2001@gmail.com
+                </a>
+                <a href="tel:+917889466366"
+                    class="px-6 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-red-50 dark:hover:bg-purple-900/30 text-gray-900 dark:text-white transition-all flex items-center gap-3 shadow-sm border border-gray-100 dark:border-gray-700">
+                    <i class="fas fa-phone text-red-600 dark:text-purple-400"></i>
+                    +91 7889466366
+                </a>
+            </div>
+
+            <div class="text-sm text-gray-400">
+                <p>&copy; 2026 Mohammad Hisham Mir. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EXPERIENCE MODAL -->
+    <div id="experience-modal" class="modal fixed inset-0 z-[70] flex items-center justify-center">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Content -->
+        <div
+            class="modal-content relative bg-white dark:bg-gray-900 w-full max-w-2xl m-4 p-8 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 flex flex-col max-h-[90vh]">
+            <button id="modal-close"
+                class="absolute top-4 right-4 p-2 text-gray-400 hover:text-red-600 dark:hover:text-purple-500 transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="mb-6 border-b border-gray-100 dark:border-gray-800 pb-4">
+                <h3 id="modal-role" class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Role Title</h3>
+                <p id="modal-company" class="text-lg text-red-600 dark:text-purple-400 font-medium">Company Name</p>
+                <p id="modal-date" class="text-sm text-gray-500 font-mono mt-1">Date Range</p>
+            </div>
+
+            <!-- Body -->
+            <div id="modal-list" class="flex-1 overflow-y-auto text-gray-600 dark:text-gray-300 leading-relaxed pr-2">
+                <!-- Bullet points injected here -->
+            </div>
+
+            <!-- Footer Action (Optional) -->
+            <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-right">
+                <button onclick="document.getElementById('modal-close').click()"
+                    class="px-5 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 font-medium transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
